@@ -37,6 +37,14 @@ public abstract class BaseCharacter {
         
         return true;
     }
+    
+    /**
+     * Getter for isAlive.
+     * @return True if character is alive
+     */
+    public boolean getIsAlive() {
+        return this.isAlive;
+    }
 
     protected void log(String message) {
         System.out.println(this.description + ": " + message);
@@ -51,6 +59,7 @@ public abstract class BaseCharacter {
         this.maxDamage = maxDamage;
         this.isAlive = true;
         this.description = description;
+        this.hitPoints = STARTING_HITPOINTS;
         
         superPowers = new ArrayList<ISuperPower>();
         randy = new Random();
