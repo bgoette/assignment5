@@ -1,6 +1,8 @@
 package main.java.patterns.factory;
 
 import main.java.patterns.decorator.ISuperPower;
+import main.java.patterns.decorator.LaserBeamDecorator;
+import main.java.patterns.decorator.SuperHearingDecorator;
 
 /**
  * Batman hero.
@@ -15,6 +17,9 @@ public class Batman extends BaseHero {
      */
     public Batman() {
         super(10, "Batman");
+        
+        this.superPowers.add(new SuperHearingDecorator(10));
+        this.superPowers.add(new LaserBeamDecorator(20));
     }
 
     @Override
