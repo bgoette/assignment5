@@ -4,12 +4,22 @@ import java.util.Random;
 
 public abstract class BaseLocation {
 
-    protected static Random randy = new Random();
+    private static int count;
+    
+    protected static final Random randy = new Random();
     protected int occupants;
     protected String description;
 
     protected void log(String message) {
         System.out.println(this.description + ": " + message);
+    }
+    
+    protected static void incrementCount() {
+        count++;
+    }
+    
+    protected static int getCount() {
+        return count;
     }
     
     /**
