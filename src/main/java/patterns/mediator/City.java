@@ -12,6 +12,9 @@ public class City extends BaseLocation {
     private ArrayList<Lair> villainLairs;
     private ArrayList<HeroBase> heroBases;
     
+    /**
+     * Default constructor.
+     */
     public City() {
         villainLairs = new ArrayList<Lair>();
         heroBases = new ArrayList<HeroBase>();
@@ -64,6 +67,4 @@ public class City extends BaseLocation {
         
         return false;
     }
-    
-    
 }
