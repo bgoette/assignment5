@@ -10,6 +10,7 @@ public abstract class BaseCharacter {
     private int hitPoints;
     private int maxDamage;
     
+    protected int ticksLeftToHeal;
     protected boolean isAlive;
     protected String description;
     
@@ -50,17 +51,18 @@ public abstract class BaseCharacter {
     /**
      * Heals the character based on how long they heal for.
      * 
-     * @param seconds The number of seconds for the character to heal
+     * @param ticks The number of ticks for the character to heal
      */
-    public void heal(int seconds) {
+    public void heal(int ticks) {
         // 1 Hit Point increase for every 2 seconds
-        this.hitPoints += seconds / 2;
+        this.hitPoints += ticks / 2;
+        this.ticksLeftToHeal = ticks;
         
         if (this.hitPoints > STARTING_HITPOINTS) {
             this.hitPoints = STARTING_HITPOINTS;
         }
         
-        this.log("[HEALING] Added " + seconds / 2 + " points!");
+        this.log("[HEALING] Added " + ticks / 2 + " points!");
     }
 
     /**
@@ -86,6 +88,10 @@ public abstract class BaseCharacter {
      * Performs one of this characters super powers.
      */
     public int attack() {
+        if (this.ticksLeftToHeal > 0) {
+            this.log("[EXHAUSTED] I can't fight I'm nursing a wound!");
+        }
+        
         if (this.superPowers.size() > 0 || this.isAlive) {
             ISuperPower power = this.superPowers.get(randy.nextInt(this.superPowers.size()));
             int damage = power.getDamageStrength();
@@ -97,6 +103,17 @@ public abstract class BaseCharacter {
             this.log("[ATTACK] I'm sorry Cap'n...I don't have the power! 0 damage inflicted.");
             
             return 0;
+        }
+    }
+    
+    /**
+     * Called every tick, updates this character
+     */
+    public void update() {
+        if (this.ticksLeftToHeal > 0) {
+            this.ticksLeftToHeal--;
+            
+            this.log("[HEALING] " + this.ticksLeftToHeal + " ticks left to heal.");
         }
     }
     
