@@ -12,6 +12,8 @@ public abstract class BaseHero extends BaseCharacter {
      */
     protected void levelUp() {
         this.powerLevel++;
+        
+        this.log("Power Level -> " + this.powerLevel);
     }
 
     /**
@@ -38,5 +40,7 @@ public abstract class BaseHero extends BaseCharacter {
      */
     public void saveCivilian() {
         this.civiliansSaved++;
+        
+        this.log("Civilians Saved -> " + this.civiliansSaved);
     }
 }
