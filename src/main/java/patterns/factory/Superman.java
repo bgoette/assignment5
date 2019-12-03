@@ -1,15 +1,34 @@
 package main.java.patterns.factory;
 
+import main.java.patterns.decorator.ISuperPower;
+
+/**
+ * Superman hero
+ * @author bagoette
+ *
+ */
 public class Superman extends BaseHero {
 
+    /**
+     * Default constructor
+     */
     public Superman() {
+        
+        // Takes very little damage
         super(5);
     }
 
     @Override
-    public void attack() {
-        // TODO Auto-generated method stub
-        
+    public int attack() {
+        if (this.superPowers.size() > 0) {
+            ISuperPower power = this.superPowers.get(randy.nextInt(this.superPowers.size()));
+            this.log(power.attack());
+            
+            return power.getDamageStrength();
+        } else {
+            this.log("This Kryptonite...sucks!");
+            
+            return 0;
+        }
     }
-
 }
