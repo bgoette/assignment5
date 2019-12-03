@@ -10,7 +10,7 @@ public class SuperPowerDecorator implements ISuperPower {
 
     @Override
     public String attack() {
-        return "Fisting Fisticuffs!";
+        return "Fighting Fisting Fisticuffs!";
     }
 
     /**
