@@ -77,5 +77,16 @@ public abstract class BaseCharacter {
     /**
      * Performs one of this characters super powers
      */
-    public abstract int attack();
+    public int attack() {
+        if (this.superPowers.size() > 0) {
+            ISuperPower power = this.superPowers.get(randy.nextInt(this.superPowers.size()));
+            this.log(power.attack());
+            
+            return power.getDamageStrength();
+        } else {
+            this.log("I'm sorry Cap'n...I don't have the power!");
+            
+            return 0;
+        }
+    }
 }
