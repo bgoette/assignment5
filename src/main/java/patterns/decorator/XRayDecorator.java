@@ -5,7 +5,7 @@ import java.util.Random;
 
 /**
  * X Ray super power that does little to no damage but lets the user
- * see any hidden objects
+ * see any hidden objects.
  * @author bagoette
  *
  */
@@ -14,8 +14,7 @@ public class XRayDecorator extends SuperPowerDecorator {
     private ArrayList<String> objects;
     
     /**
-     * Default constructor
-     * @param damageStrength The amount of damage this power can do
+     * Default constructor.
      */
     public XRayDecorator() {
         // X Ray does very little damage

@@ -17,7 +17,7 @@ public abstract class BaseCharacter {
     protected Random randy;
     
     /**
-     * The starting hit points for all characters
+     * The starting hit points for all characters.
      */
     public static final int STARTING_HITPOINTS = 100;
     
@@ -34,9 +34,9 @@ public abstract class BaseCharacter {
     }
     
     /**
-     * Default constructor
+     * Default constructor.
      * 
-     * @param maxDamage The max this character can take in damage
+     * @param maxDamage The max this character can take in damage.
      */
     public BaseCharacter(int maxDamage) {
         this.maxDamage = maxDamage;
@@ -48,7 +48,7 @@ public abstract class BaseCharacter {
     }
 
     /**
-     * Heals the character based on how long they heal for
+     * Heals the character based on how long they heal for.
      * 
      * @param seconds The number of seconds for the character to heal
      */
@@ -64,7 +64,7 @@ public abstract class BaseCharacter {
     }
 
     /**
-     * Deducts hit points from the character up to this character's max damage limit
+     * Deducts hit points from the character up to this character's max damage limit.
      * 
      * @param points The number of points to deduct
      */
@@ -83,10 +83,10 @@ public abstract class BaseCharacter {
     }
     
     /**
-     * Performs one of this characters super powers
+     * Performs one of this characters super powers.
      */
     public int attack() {
-        if (this.superPowers.size() > 0) {
+        if (this.superPowers.size() > 0 || this.isAlive) {
             ISuperPower power = this.superPowers.get(randy.nextInt(this.superPowers.size()));
             int damage = power.getDamageStrength();
             

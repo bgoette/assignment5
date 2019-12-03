@@ -8,7 +8,7 @@ public abstract class BaseHero extends BaseCharacter {
     protected int powerLevel;
     
     /**
-     * Increases this hero's power level
+     * Increases this hero's power level.
      */
     protected void levelUp() {
         this.powerLevel++;
@@ -17,8 +17,8 @@ public abstract class BaseHero extends BaseCharacter {
     }
 
     /**
-     * Default constructor
-     * @param maxDamage The max this character can take in damage
+     * Default constructor.
+     * @param maxDamage The max this character can take in damage.
      */
     public BaseHero(int maxDamage) {
         super(maxDamage);
@@ -28,15 +28,15 @@ public abstract class BaseHero extends BaseCharacter {
     }
 
     /**
-     * Getter for civiliansSaved
-     * @return Returns the number of civilians this hero saved
+     * Getter for civiliansSaved.
+     * @return Returns the number of civilians this hero saved.
      */
     public int getCiviliansSaved() {
         return this.civiliansSaved;
     }
     
     /**
-     * Increases the count of saved civilians
+     * Increases the count of saved civilians.
      */
     public void saveCivilian() {
         this.civiliansSaved++;

@@ -14,7 +14,7 @@ public class SuperPowerDecorator implements ISuperPower {
     }
 
     /**
-     * Increases this super power strength
+     * Increases this super power strength.
      * @param power The amount to increase this power
      */
     @Override
