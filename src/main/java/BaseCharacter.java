@@ -1,6 +1,7 @@
 package main.java;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import main.java.patterns.decorator.ISuperPower;
 
@@ -13,6 +14,7 @@ public abstract class BaseCharacter {
     protected String description;
     
     protected ArrayList<ISuperPower> superPowers;
+    protected Random randy;
     
     /**
      * The starting hit points for all characters
@@ -40,6 +42,7 @@ public abstract class BaseCharacter {
         this.description = "???";
         
         superPowers = new ArrayList<ISuperPower>();
+        randy = new Random();
     }
 
     /**
@@ -74,5 +77,5 @@ public abstract class BaseCharacter {
     /**
      * Performs one of this characters super powers
      */
-    public abstract void attack();
+    public abstract int attack();
 }
