@@ -5,7 +5,7 @@ import main.java.BaseCharacter;
 public class MastermindVillain extends BaseVillain {
 
     public MastermindVillain() {
-        super(BaseCharacter.STARTING_HITPOINTS);
+        super(BaseCharacter.STARTING_HITPOINTS, "Mastermind");
     }
 
 }

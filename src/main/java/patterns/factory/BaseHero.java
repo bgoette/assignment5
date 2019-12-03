@@ -20,8 +20,8 @@ public abstract class BaseHero extends BaseCharacter {
      * Default constructor.
      * @param maxDamage The max this character can take in damage.
      */
-    public BaseHero(int maxDamage) {
-        super(maxDamage);
+    public BaseHero(int maxDamage, String description) {
+        super(maxDamage, description);
 
         this.civiliansSaved = 0;
         this.powerLevel = 1;

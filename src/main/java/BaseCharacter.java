@@ -38,10 +38,10 @@ public abstract class BaseCharacter {
      * 
      * @param maxDamage The max this character can take in damage.
      */
-    public BaseCharacter(int maxDamage) {
+    public BaseCharacter(int maxDamage, String description) {
         this.maxDamage = maxDamage;
         this.isAlive = true;
-        this.description = "???";
+        this.description = description;
         
         superPowers = new ArrayList<ISuperPower>();
         randy = new Random();

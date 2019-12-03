@@ -14,9 +14,7 @@ public class Batman extends BaseHero {
      * Default constructor.
      */
     public Batman() {
-        super(10);
-
-        this.description = "Batman";
+        super(10, "Batman");
     }
 
     @Override

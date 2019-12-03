@@ -15,10 +15,8 @@ public class Superman extends BaseHero {
      */
     public Superman() {
 
-        // Takes very little damage
-        super(5);
-
-        this.description = "Superman";
+        // Takes very little damage, String description) {
+        super(5, "Superman");
     }
 
     @Override
