@@ -6,4 +6,10 @@ public class NinjaVillain extends BaseVillain {
         super(10);
     }
 
+    @Override
+    public void attack() {
+        // TODO Auto-generated method stub
+        
+    }
+
 }

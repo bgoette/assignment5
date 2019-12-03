@@ -6,4 +6,10 @@ public class IronMan extends BaseHero {
         super(15);
     }
 
+    @Override
+    public void attack() {
+        // TODO Auto-generated method stub
+        
+    }
+
 }

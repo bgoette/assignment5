@@ -6,4 +6,10 @@ public class Superman extends BaseHero {
         super(5);
     }
 
+    @Override
+    public void attack() {
+        // TODO Auto-generated method stub
+        
+    }
+
 }
