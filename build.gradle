@@ -6,7 +6,7 @@ apply plugin: 'application'
 apply plugin: 'jacoco'
 
 
-mainClassName = 'main.java.Main'
+mainClassName = 'java.main.Main'
 
 
 // In this section you declare where to find the dependencies of your project
@@ -18,15 +18,6 @@ repositories {
 dependencies {
 
     compile "junit:junit:4.12"
-    compile files('cls/')
-}
-
-test {
-   filter {
-      // Specific test class
-      includeTestsMatching "GivenWhiteBox"
-      includeTestsMatching "CourseTest"
-   }
 }
 
 /////////////////////////////////////////////////////////////////////////
