@@ -54,4 +54,9 @@ public class Lair extends BaseLocation {
         return false;
     }
 
+    @Override
+    public BaseCharacter getOccupant(int index) {
+        return villains.get(index);
+    }
+
 }

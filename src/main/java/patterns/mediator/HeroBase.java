@@ -54,4 +54,9 @@ public class HeroBase extends BaseLocation {
         return false;
     }
 
+    @Override
+    public BaseCharacter getOccupant(int index) {
+        return heroes.get(index);
+    }
+
 }
