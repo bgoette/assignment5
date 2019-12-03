@@ -22,12 +22,20 @@ public abstract class BaseCharacter {
      */
     public static final int STARTING_HITPOINTS = 100;
     
-    protected void checkIfAlive() {
+    /**
+     * Checks if character is alive.
+     * @return True if still alive.
+     */
+    public boolean checkIfAlive() {
         if (this.hitPoints <= 0) {
             this.isAlive = false;
             
             this.log("Hey Sanka, ya dead? Ya mon.");
+            
+            return false;
         }
+        
+        return true;
     }
 
     protected void log(String message) {
@@ -93,6 +101,13 @@ public abstract class BaseCharacter {
         }
         
         if (this.superPowers.size() > 0 || this.isAlive) {
+            int powers = this.superPowers.size();
+            if (powers <= 0) {
+                this.log("[PUNY MORTAL] I AM NOT SUPER!");
+                
+                return 0;
+            }
+            
             ISuperPower power = this.superPowers.get(randy.nextInt(this.superPowers.size()));
             int damage = power.getDamageStrength();
             
