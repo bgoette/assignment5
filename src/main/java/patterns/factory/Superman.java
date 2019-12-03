@@ -1,6 +1,7 @@
 package main.java.patterns.factory;
 
 import main.java.patterns.decorator.ISuperPower;
+import main.java.patterns.decorator.LaserBeamDecorator;
 
 /**
  * Superman hero.
@@ -17,6 +18,8 @@ public class Superman extends BaseHero {
 
         // Takes very little damage, String description) {
         super(5, "Superman");
+        
+        superPowers.add(new LaserBeamDecorator(20));
     }
 
     @Override
