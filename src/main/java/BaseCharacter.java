@@ -1,11 +1,18 @@
 package main.java;
 
+import java.util.ArrayList;
+
+import main.java.patterns.decorator.ISuperPower;
+
 public abstract class BaseCharacter {
 
     private int hitPoints;
     private int maxDamage;
+    
     protected boolean isAlive;
     protected String description;
+    
+    protected ArrayList<ISuperPower> superPowers;
     
     /**
      * The starting hit points for all characters
@@ -31,6 +38,8 @@ public abstract class BaseCharacter {
         this.maxDamage = maxDamage;
         this.isAlive = true;
         this.description = "???";
+        
+        superPowers = new ArrayList<ISuperPower>();
     }
 
     /**
@@ -61,4 +70,9 @@ public abstract class BaseCharacter {
         
         this.checkIfAlive();
     }
+    
+    /**
+     * Performs one of this characters super powers
+     */
+    public abstract void attack();
 }
