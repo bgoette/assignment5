@@ -5,6 +5,7 @@ public abstract class BaseCharacter {
     private int hitPoints;
     private int maxDamage;
     protected boolean isAlive;
+    protected String description;
     
     /**
      * The starting hit points for all characters
@@ -17,6 +18,10 @@ public abstract class BaseCharacter {
         }
     }
 
+    protected void log(String message) {
+        System.out.println(this.description + ": " + message);
+    }
+    
     /**
      * Default constructor
      * 
@@ -25,6 +30,7 @@ public abstract class BaseCharacter {
     public BaseCharacter(int maxDamage) {
         this.maxDamage = maxDamage;
         this.isAlive = true;
+        this.description = "???";
     }
 
     /**
