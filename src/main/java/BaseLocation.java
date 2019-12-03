@@ -1,7 +1,10 @@
 package main.java;
 
+import java.util.Random;
+
 public abstract class BaseLocation {
 
+    protected Random randy;
     protected int occupants;
     
     /**
