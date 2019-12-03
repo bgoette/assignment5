@@ -16,20 +16,21 @@ public class Superman extends BaseHero {
         
         // Takes very little damage
         super(5);
+        
+        this.description = "Superman";
     }
 
     @Override
     public int attack() {
         if (this.superPowers.size() > 0) {
             ISuperPower power = this.superPowers.get(randy.nextInt(this.superPowers.size()));
-            this.log(power.attack());
+            int damage = (int) ((double) power.getDamageStrength() * (double) this.powerLevel * 0.5);
             
-            return (int)(
-                    (double)power.getDamageStrength() * 
-                    (double)this.powerLevel * 
-                    (double)(1.0 / 4.0));
+            this.log("[ATTACK] " + power.attack() + " " + damage + " damage inflicted!");
+
+            return damage;
         } else {
-            this.log("This Kryptonite...sucks!");
+            this.log("[ATTACK] This Kryptonite...sucks! 0 damage inflicted.");
             
             return 0;
         }
