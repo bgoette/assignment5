@@ -4,14 +4,14 @@ public abstract class BaseCharacter {
 
     private int hitPoints;
     private int maxDamage;
-    private boolean isAlive;
+    protected boolean isAlive;
     
     /**
      * The starting hit points for all characters
      */
     public static final int STARTING_HITPOINTS = 100;
     
-    private void checkIfAlive() {
+    protected void checkIfAlive() {
         if (this.hitPoints <= 0) {
             this.isAlive = false;
         }
