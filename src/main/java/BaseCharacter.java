@@ -24,6 +24,8 @@ public abstract class BaseCharacter {
     protected void checkIfAlive() {
         if (this.hitPoints <= 0) {
             this.isAlive = false;
+            
+            this.log("Hey Sanka, ya dead? Ya mon.");
         }
     }
 
@@ -57,6 +59,8 @@ public abstract class BaseCharacter {
         if (this.hitPoints > STARTING_HITPOINTS) {
             this.hitPoints = STARTING_HITPOINTS;
         }
+        
+        this.log("[HEALING] Added " + seconds / 2 + " points!");
     }
 
     /**
@@ -65,11 +69,15 @@ public abstract class BaseCharacter {
      * @param points The number of points to deduct
      */
     public void damage(int points) {
-        if (points < this.maxDamage) {
-            this.hitPoints -= points;
-        } else {
-            this.hitPoints -= this.maxDamage;
+        int damage = points;
+        
+        if (points > this.maxDamage) {
+            damage = this.maxDamage;
         }
+        
+        this.hitPoints -= damage;
+        
+        this.log("[DAMAGE] Took " + damage + " points damage!");
         
         this.checkIfAlive();
     }
@@ -80,11 +88,13 @@ public abstract class BaseCharacter {
     public int attack() {
         if (this.superPowers.size() > 0) {
             ISuperPower power = this.superPowers.get(randy.nextInt(this.superPowers.size()));
-            this.log(power.attack());
+            int damage = power.getDamageStrength();
             
-            return power.getDamageStrength();
+            this.log("[ATTACK] " + power.attack() + " " + damage + " damage inflicted!");
+            
+            return damage;
         } else {
-            this.log("I'm sorry Cap'n...I don't have the power!");
+            this.log("[ATTACK] I'm sorry Cap'n...I don't have the power! 0 damage inflicted.");
             
             return 0;
         }

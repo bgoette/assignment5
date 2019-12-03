@@ -25,7 +25,7 @@ public class IronMan extends BaseHero {
 
             return damage;
         } else {
-            this.log("[ATTACK] Tony Stark?! 0 damage inflicted");
+            this.log("[ATTACK] Where are you, Jarvis?! 0 damage inflicted");
             
             return 0;
         }
