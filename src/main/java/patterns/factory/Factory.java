@@ -17,7 +17,7 @@ public class Factory {
      * Creates a random hero.
      * @return Returns a random hero.
      */
-    public static BaseHero CreateHero() {
+    public static BaseHero createHero() {
         int num = randy.nextInt(numHeroes);
         
         switch (num) {
@@ -42,7 +42,7 @@ public class Factory {
      * Creates a random villain.
      * @return Returns a random villain.
      */
-    public static BaseVillain CreateVillain() {
+    public static BaseVillain createVillain() {
         int num = randy.nextInt(numVillains);
         
         switch (num) {
