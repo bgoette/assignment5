@@ -9,19 +9,21 @@ import main.java.patterns.factory.BaseVillain;
 public class Lair extends BaseLocation {
 
     private ArrayList<BaseVillain> villains;
-    private static int count;
 
     /**
      * Default constructor.
      */
     public Lair() {
-        super("Villain Lair " + count++);
+        super("Villain Lair " + getCount());
+        incrementCount();
+        
         villains = new ArrayList<BaseVillain>();
     }
 
     @Override
     public boolean addOccupant(BaseCharacter occupant) {
-        if (occupant.getClass().equals(BaseVillain.class)) {
+        
+        if (occupant instanceof BaseVillain) {
             if (villains.size() >= 5) {
                 return false;
             }
@@ -39,7 +41,7 @@ public class Lair extends BaseLocation {
 
     @Override
     public boolean removeOccupant(BaseCharacter occupant) {
-        if (occupant.getClass().equals(BaseVillain.class)) {
+        if (occupant instanceof BaseVillain) {
             if (villains.contains(occupant)) {
                 villains.remove((BaseVillain) occupant);
 
