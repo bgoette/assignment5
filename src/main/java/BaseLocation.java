@@ -4,7 +4,7 @@ import java.util.Random;
 
 public abstract class BaseLocation {
 
-    protected Random randy;
+    protected static Random randy = new Random();
     protected int occupants;
     
     /**
