@@ -1,5 +1,5 @@
 package main.java.patterns.factory;
 
-public interface IVillain {
+public abstract class BaseVillain {
 
 }

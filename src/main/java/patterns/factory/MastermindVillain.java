@@ -1,5 +1,5 @@
 package main.java.patterns.factory;
 
-public class MastermindVillain implements IVillain {
+public class MastermindVillain extends BaseVillain {
 
 }
