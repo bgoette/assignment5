@@ -5,23 +5,25 @@ import java.util.ArrayList;
 import main.java.BaseCharacter;
 import main.java.BaseLocation;
 import main.java.patterns.factory.BaseHero;
+import main.java.patterns.factory.BaseVillain;
 
 public class HeroBase extends BaseLocation {
     
     private ArrayList<BaseHero> heroes;
-    private static int count;
     
     /**
      * Default constructor.
      */
     public HeroBase() {
-        super("Hero Base " + count++);
+        super("Hero Base " + getCount());
+        incrementCount();
+        
         heroes = new ArrayList<BaseHero>();
     }
 
     @Override
     public boolean addOccupant(BaseCharacter occupant) {
-        if (occupant.getClass().equals(BaseHero.class)) {
+        if (occupant instanceof BaseHero) {
             if (heroes.size() >= 5) {
                 return false;
             }
@@ -39,7 +41,7 @@ public class HeroBase extends BaseLocation {
 
     @Override
     public boolean removeOccupant(BaseCharacter occupant) {
-        if (occupant.getClass().equals(BaseHero.class)) {
+        if (occupant instanceof BaseHero) {
             if (heroes.contains(occupant)) {
                 heroes.remove((BaseHero)occupant);
                 
