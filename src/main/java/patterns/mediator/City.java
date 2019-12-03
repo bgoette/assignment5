@@ -13,6 +13,8 @@ public class City extends BaseLocation {
     private ArrayList<Lair> villainLairs;
     private ArrayList<HeroBase> heroBases;
     private Timer simulationTimer;
+    
+    private boolean simulationRunning;
 
     /**
      * Half second tick rate.
@@ -48,6 +50,8 @@ public class City extends BaseLocation {
         base.addOccupant(new IronMan());
         
         heroBases.add(base);
+        
+        simulationRunning = true;
 
         simulationTimer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
@@ -56,7 +60,9 @@ public class City extends BaseLocation {
         }, 0, TICK_RATE);
         
         try {
-            Thread.sleep(1000);
+            while (simulationRunning) {
+                Thread.sleep(1000);
+            }
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -117,6 +123,7 @@ public class City extends BaseLocation {
         
         if (heroes <= 0) {
             this.simulationTimer.cancel();
+            simulationRunning = false;
             
             this.log("[MAYHEM] THE VILLAINS WIN!");
             return;
@@ -132,6 +139,7 @@ public class City extends BaseLocation {
         
         if (villains <= 0) {
             this.simulationTimer.cancel();
+            simulationRunning = false;
             
             this.log("[JOYOUS] THE HEROES WIN!");
             return;
@@ -151,12 +159,15 @@ public class City extends BaseLocation {
         
         hero.damage(attackDamage);
         
-        if (hero.checkIfAlive()) {
-            if (villain.checkIfAlive()) {
+        if (hero.getIsAlive()) {
+            if (villain.getIsAlive()) {
                 this.log("[BATTLE] The war must continue!");
             } else {
                 hero.saveCivilian();
+                lair.removeOccupant(villain);
             }
+        } else {
+            heroBase.removeOccupant(hero);
         }
     }
 
