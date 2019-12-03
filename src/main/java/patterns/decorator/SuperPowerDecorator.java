@@ -17,7 +17,13 @@ public class SuperPowerDecorator implements ISuperPower {
      * Increases this super power strength
      * @param power The amount to increase this power
      */
-    public void increasePower(int power) {
+    @Override
+    public void increaseStrength(int power) {
         this.damageStrength += power;
+    }
+
+    @Override
+    public int getDamageStrength() {
+        return this.damageStrength;
     }
 }
