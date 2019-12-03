@@ -10,7 +10,14 @@ public class SuperPowerDecorator implements ISuperPower {
 
     @Override
     public String attack() {
-        return null;
+        return "Fisting Fisticuffs!";
     }
 
+    /**
+     * Increases this super power strength
+     * @param power The amount to increase this power
+     */
+    public void increasePower(int power) {
+        this.damageStrength += power;
+    }
 }
