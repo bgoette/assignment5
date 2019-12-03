@@ -6,10 +6,4 @@ public class Batman extends BaseHero {
         super(10);
     }
 
-    @Override
-    public void attack() {
-        // TODO Auto-generated method stub
-        
-    }
-
 }

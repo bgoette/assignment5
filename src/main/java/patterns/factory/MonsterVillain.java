@@ -6,10 +6,4 @@ public class MonsterVillain extends BaseVillain {
         super(5);
     }
 
-    @Override
-    public void attack() {
-        // TODO Auto-generated method stub
-        
-    }
-
 }

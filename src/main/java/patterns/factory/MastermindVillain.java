@@ -8,10 +8,4 @@ public class MastermindVillain extends BaseVillain {
         super(BaseCharacter.STARTING_HITPOINTS);
     }
 
-    @Override
-    public void attack() {
-        // TODO Auto-generated method stub
-        
-    }
-
 }

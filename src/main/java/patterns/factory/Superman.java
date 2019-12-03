@@ -24,7 +24,10 @@ public class Superman extends BaseHero {
             ISuperPower power = this.superPowers.get(randy.nextInt(this.superPowers.size()));
             this.log(power.attack());
             
-            return power.getDamageStrength();
+            return (int)(
+                    (double)power.getDamageStrength() * 
+                    (double)this.powerLevel * 
+                    (double)(1.0 / 4.0));
         } else {
             this.log("This Kryptonite...sucks!");
             

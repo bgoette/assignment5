@@ -7,9 +7,8 @@ public class IronMan extends BaseHero {
     }
 
     @Override
-    public void attack() {
-        // TODO Auto-generated method stub
-        
+    public int attack() {
+        return 0;
     }
 
 }
