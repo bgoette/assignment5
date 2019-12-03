@@ -24,9 +24,16 @@ public abstract class BaseLocation {
      * Getter for the occupant count.
      * @return The number of occupants.
      */
-    public int getOccupants() {
+    public int getOccupantCount() {
         return this.occupants;
     }
+    
+    /**
+     * Gets an occupant from the character list.
+     * @param index The index of the character.
+     * @return A character from the list.
+     */
+    public abstract BaseCharacter getOccupant(int index);
     
     /**
      * Adds an occupant to this location.
