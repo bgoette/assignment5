@@ -9,11 +9,13 @@ import main.java.patterns.factory.BaseHero;
 public class HeroBase extends BaseLocation {
     
     private ArrayList<BaseHero> heroes;
+    private static int count;
     
     /**
      * Default constructor.
      */
     public HeroBase() {
+        super("Hero Base " + count++);
         heroes = new ArrayList<BaseHero>();
     }
 
@@ -26,6 +28,8 @@ public class HeroBase extends BaseLocation {
             
             heroes.add((BaseHero)occupant);
             this.occupants++;
+            
+            this.log("[BIRTH] " + occupant.toString() + " is born this day!");
             
             return true;
         }
@@ -40,6 +44,9 @@ public class HeroBase extends BaseLocation {
                 heroes.remove((BaseHero)occupant);
                 
                 this.occupants--;
+                
+                this.log("[DEATH] " + occupant.toString() + ", a hero, has fallen...");
+                
                 return true;
             }
         }
