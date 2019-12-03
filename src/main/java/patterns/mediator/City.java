@@ -27,7 +27,7 @@ public class City extends BaseLocation {
         
         villainLairs = new ArrayList<Lair>();
         heroBases = new ArrayList<HeroBase>();
-        simulationTimer = new Timer(false);
+        simulationTimer = new Timer(true);
     }
 
     /**
@@ -54,10 +54,16 @@ public class City extends BaseLocation {
                 simulationUpdate();
             }
         }, 0, TICK_RATE);
+        
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public int getOccupants() {
+    public int getOccupantCount() {
         ArrayList<BaseLocation> locations = new ArrayList<BaseLocation>(villainLairs);
         locations.addAll(heroBases);
 
@@ -105,6 +111,57 @@ public class City extends BaseLocation {
     }
 
     private void simulationUpdate() {
+        int heroBaseIndex = randy.nextInt(heroBases.size());
+        HeroBase heroBase = heroBases.get(heroBaseIndex);
+        int heroes = heroBase.getOccupantCount();
+        
+        if (heroes <= 0) {
+            this.simulationTimer.cancel();
+            
+            this.log("[MAYHEM] THE VILLAINS WIN!");
+            return;
+        }
+        
+        int heroIndex = randy.nextInt(heroes);
+        BaseHero hero = (BaseHero)heroBase.getOccupant(heroIndex);
+        
+        int lairIndex = randy.nextInt(villainLairs.size());
+        Lair lair = villainLairs.get(lairIndex);
+        
+        int villains = lair.getOccupantCount();
+        
+        if (villains <= 0) {
+            this.simulationTimer.cancel();
+            
+            this.log("[JOYOUS] THE HEROES WIN!");
+            return;
+        }
+        int villainIndex = randy.nextInt(lair.getOccupantCount());
+        BaseVillain villain = (BaseVillain)lair.getOccupant(villainIndex);
+        
+        int attackDamage = hero.attack();
+        
+        if (attackDamage > 0) {
+            villain.damage(attackDamage);
+            
+            attackDamage = villain.attack();
+        } else {
+            attackDamage = villain.attack() + 1;
+        }
+        
+        hero.damage(attackDamage);
+        
+        if (hero.checkIfAlive()) {
+            if (villain.checkIfAlive()) {
+                this.log("[BATTLE] The war must continue!");
+            } else {
+                hero.saveCivilian();
+            }
+        }
+    }
 
+    @Override
+    public BaseCharacter getOccupant(int index) {
+        return null;
     }
 }
