@@ -107,21 +107,35 @@ public class City extends BaseLocation {
         return false;
     }
 
+    private void endSimulation(String message) {
+        this.simulationTimer.cancel();
+        this.simulationRunning = false;
+        
+        this.log(message);
+    }
+    
     private void simulationUpdate() {
+        if (heroBases.size() <= 0) {
+            endSimulation("[MAYHEM] THE VILLAINS WIN!");
+            return;
+        }
+        
         int heroBaseIndex = randy.nextInt(heroBases.size());
         HeroBase heroBase = heroBases.get(heroBaseIndex);
         int heroes = heroBase.getOccupantCount();
         
         if (heroes <= 0) {
-            this.simulationTimer.cancel();
-            simulationRunning = false;
-            
-            this.log("[MAYHEM] THE VILLAINS WIN!");
+            endSimulation("[MAYHEM] THE VILLAINS WIN!");
             return;
         }
         
         int heroIndex = randy.nextInt(heroes);
         BaseHero hero = (BaseHero)heroBase.getOccupant(heroIndex);
+
+        if (villainLairs.size() <= 0) {
+            endSimulation("[JOYOUS] THE HEROES WIN!");
+            return;
+        }
         
         int lairIndex = randy.nextInt(villainLairs.size());
         Lair lair = villainLairs.get(lairIndex);
@@ -129,10 +143,7 @@ public class City extends BaseLocation {
         int villains = lair.getOccupantCount();
         
         if (villains <= 0) {
-            this.simulationTimer.cancel();
-            simulationRunning = false;
-            
-            this.log("[JOYOUS] THE HEROES WIN!");
+            endSimulation("[JOYOUS] THE HEROES WIN!");
             return;
         }
         
@@ -160,6 +171,12 @@ public class City extends BaseLocation {
                 hero.addSuperPowers(villain.getSuperPowers());
                 
                 lair.removeOccupant(villain);
+                
+                if (lair.getOccupantCount() <= 0)
+                {
+                    this.log("[SMALL VICTORY] " + lair.toString() + " has been destroyed!");
+                    villainLairs.remove(lair);
+                }
             }
             
             hero.heal(2);
@@ -175,12 +192,18 @@ public class City extends BaseLocation {
                 if (!addSuccess) {
                     Lair newLair = new Lair();
                     newLair.addOccupant(newVillain);
-                    
+
                     villainLairs.add(newLair);
                 }
             }
             
             heroBase.removeOccupant(hero);
+            
+            if (heroBase.getOccupantCount() <= 0)
+            {
+                this.log("[COLLAPSE] " + heroBase.toString() + " has been destroyed!");
+                heroBases.remove(heroBase);
+            }
         }
         
         for (HeroBase base : heroBases) {
