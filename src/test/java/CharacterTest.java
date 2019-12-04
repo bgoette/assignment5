@@ -1,11 +1,10 @@
 package test.java;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
-
-import org.junit.Before;
-import org.junit.Test;
 
 import main.java.patterns.decorator.ISuperPower;
 import main.java.patterns.decorator.SuperHearingDecorator;
@@ -17,8 +16,11 @@ import main.java.patterns.factory.MonsterVillain;
 import main.java.patterns.factory.NinjaVillain;
 import main.java.patterns.factory.Superman;
 
+import org.junit.Before;
+import org.junit.Test;
+
 public class CharacterTest {
-    
+
     private Aquaman aquaman;
     private Batman batman;
     private Superman superman;
@@ -27,6 +29,10 @@ public class CharacterTest {
     private MonsterVillain monster;
     private NinjaVillain ninja;
 
+    /**
+     * Sets up character objects for testing.
+     * @throws Exception Doesn't really throw one.
+     */
     @Before
     public void setUp() throws Exception {
         aquaman = new Aquaman();
@@ -37,7 +43,7 @@ public class CharacterTest {
         monster = new MonsterVillain();
         ninja = new NinjaVillain();
     }
-    
+
     @Test
     public void testVillains() {
         mastermind.attack();
@@ -51,7 +57,7 @@ public class CharacterTest {
         assertTrue(aquaman.getCiviliansSaved() == 0);
         assertTrue(aquaman.getSuperPowers().size() == 1);
         assertTrue(aquaman.attack() == 1);
-        
+
         aquaman.getSuperPowers().remove(0);
         assertTrue(aquaman.attack() == 0);
 
@@ -65,7 +71,7 @@ public class CharacterTest {
         assertTrue(batman.getCiviliansSaved() == 0);
         assertTrue(batman.getSuperPowers().size() == 1);
         assertTrue(batman.attack() == 10);
-        
+
         batman.getSuperPowers().remove(0);
         assertTrue(batman.attack() == 0);
 
@@ -79,7 +85,7 @@ public class CharacterTest {
         assertTrue(ironman.getCiviliansSaved() == 0);
         assertTrue(ironman.getSuperPowers().size() == 1);
         assertTrue(ironman.attack() == 6);
-        
+
         ironman.getSuperPowers().remove(0);
         assertTrue(ironman.attack() == 0);
 
@@ -93,7 +99,7 @@ public class CharacterTest {
         assertTrue(superman.getCiviliansSaved() == 0);
         assertTrue(superman.getSuperPowers().size() == 1);
         assertTrue(superman.attack() == 10);
-        
+
         superman.getSuperPowers().remove(0);
         assertTrue(superman.attack() == 0);
 
@@ -104,25 +110,25 @@ public class CharacterTest {
     @Test
     public void testBaseCharacter() {
         superman = new Superman();
-        
+
         superman.levelUp();
         ISuperPower power = new SuperHearingDecorator(10);
         superman.addSuperPower(power);
         assertTrue(superman.getSuperPowers().size() == 2);
-        
+
         ArrayList<ISuperPower> powers = new ArrayList<ISuperPower>();
         powers.add(power);
-        
+
         superman.addSuperPowers(powers);
-        
+
         assertNotNull(superman.hashCode());
-        
+
         superman.heal(2);
         assertTrue(superman.attack() == 0);
 
         mastermind.heal(2);
         assertTrue(mastermind.attack() == 0);
-        
+
         mastermind.damage(100);
         mastermind.damage(200);
 
@@ -130,9 +136,9 @@ public class CharacterTest {
         mastermind.update();
         mastermind.update();
         assertTrue(mastermind.attack() == 0);
-        
+
         assertFalse(mastermind.equals(null));
         assertFalse(mastermind.equals(superman));
     }
-    
+
 }
