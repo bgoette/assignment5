@@ -16,6 +16,31 @@ public abstract class BaseCharacter {
     
     protected ArrayList<ISuperPower> superPowers;
     protected Random randy;
+    protected int powerLevel;
+
+    /**
+     * Default constructor.
+     * 
+     * @param maxDamage The max this character can take in damage.
+     */
+    public BaseCharacter(int maxDamage, String description) {
+        this.maxDamage = maxDamage;
+        this.isAlive = true;
+        this.description = description;
+        this.hitPoints = STARTING_HITPOINTS;
+        
+        superPowers = new ArrayList<ISuperPower>();
+        randy = new Random();
+    }
+    
+    /**
+     * Increases this hero's power level.
+     */
+    public void levelUp() {
+        this.powerLevel++;
+        
+        this.log("[STATUS] Power Level -> " + this.powerLevel);
+    }
     
     /**
      * The starting hit points for all characters.
@@ -44,25 +69,6 @@ public abstract class BaseCharacter {
      */
     public boolean getIsAlive() {
         return this.isAlive;
-    }
-
-    protected void log(String message) {
-        System.out.println(this.description + ": " + message);
-    }
-    
-    /**
-     * Default constructor.
-     * 
-     * @param maxDamage The max this character can take in damage.
-     */
-    public BaseCharacter(int maxDamage, String description) {
-        this.maxDamage = maxDamage;
-        this.isAlive = true;
-        this.description = description;
-        this.hitPoints = STARTING_HITPOINTS;
-        
-        superPowers = new ArrayList<ISuperPower>();
-        randy = new Random();
     }
 
     /**
@@ -168,5 +174,9 @@ public abstract class BaseCharacter {
     @Override
     public String toString() {
         return this.description;
+    }
+
+    protected void log(String message) {
+        System.out.println(this.description + ": " + message);
     }
 }
