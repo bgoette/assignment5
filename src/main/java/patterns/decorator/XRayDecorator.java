@@ -18,7 +18,7 @@ public class XRayDecorator extends SuperPowerDecorator {
      */
     public XRayDecorator() {
         // X Ray does very little damage
-        super(1);
+        super(1, "INSERT 1980'S BEEP BOOP BOP BOOP...");
         
         initObjects();
     }
@@ -30,17 +30,17 @@ public class XRayDecorator extends SuperPowerDecorator {
     
     private void initObjects() {
         objects = new ArrayList<String>();
-        objects.add("a bullet-proof vest");
-        objects.add("a mom tattoo");
-        objects.add("a fire retardent suit");
-        objects.add("tear gas");
-        objects.add("Spongebob undies");
-        objects.add("an indestructable cup");
-        objects.add("a gun");
-        objects.add("a poison pen");
-        objects.add("a Babe Ruth baseball card");
+        objects.add("a bullet-proof vest!");
+        objects.add("a mom tattoo... 8-)!");
+        objects.add("a fire retardent suit!");
+        objects.add("tear gas!");
+        objects.add("Spongebob undies...");
+        objects.add("an indestructable cup!");
+        objects.add("a gun!");
+        objects.add("a poison pen!");
+        objects.add("a Babe Ruth baseball card!");
         objects.add("nothing...");
-        objects.add("cold hard cash");
+        objects.add("cold hard cash..OH YEAH!");
     }
     
     private String getXRayedObject() {

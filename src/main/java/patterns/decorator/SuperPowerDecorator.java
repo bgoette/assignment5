@@ -3,14 +3,16 @@ package main.java.patterns.decorator;
 public class SuperPowerDecorator implements ISuperPower {
     
     protected int damageStrength;
+    protected String attackMessage;
     
-    public SuperPowerDecorator(int damageStrength) {
+    public SuperPowerDecorator(int damageStrength, String attackMessage) {
         this.damageStrength = damageStrength;
+        this.attackMessage = attackMessage;
     }
 
     @Override
     public String attack() {
-        return "Fighting Fisting Fisticuffs!";
+        return this.attackMessage;
     }
 
     /**
