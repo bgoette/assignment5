@@ -141,6 +141,30 @@ public abstract class BaseCharacter {
         }
     }
     
+    /**
+     * Adds the given super power to this character.
+     * @param power The power to add.
+     */
+    public void addSuperPower(ISuperPower power) {
+        this.superPowers.add(power);
+    }
+    
+    /**
+     * Adds the given super powers to this character.
+     * @param powers The powers to add.
+     */
+    public void addSuperPowers(ArrayList<ISuperPower> powers) {
+        this.superPowers.addAll(powers);
+    }
+    
+    /**
+     * Gets this character's super powers.
+     * @return This character's super powers.
+     */
+    public ArrayList<ISuperPower> getSuperPowers() {
+        return this.superPowers;
+    }
+    
     @Override
     public String toString() {
         return this.description;
