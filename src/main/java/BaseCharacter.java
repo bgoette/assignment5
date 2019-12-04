@@ -30,7 +30,7 @@ public abstract class BaseCharacter {
         if (this.hitPoints <= 0) {
             this.isAlive = false;
             
-            this.log("Hey Sanka, ya dead? Ya mon.");
+            this.log("[STATUS] Hey Sanka, ya dead? Ya mon.");
             
             return false;
         }
