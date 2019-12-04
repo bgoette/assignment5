@@ -59,4 +59,27 @@ public class Factory {
                 return new MastermindVillain();
         }
     }
+
+    /**
+     * Creates a replica of this villain.
+     * @param original The villain to clone.
+     * @return A new villain with same powers as the original
+     */
+    public static BaseVillain clone(BaseVillain original) {
+        BaseVillain newVillain = null;
+        
+        if (original instanceof MastermindVillain) {
+            newVillain = new MastermindVillain();
+        } else if (original instanceof MonsterVillain) {
+            newVillain = new MonsterVillain();
+        } else if (original instanceof NinjaVillain) {
+            newVillain = new NinjaVillain();
+        }
+        
+        if (newVillain != null) {
+            newVillain.addSuperPowers(original.getSuperPowers());            
+        }
+        
+        return newVillain;
+    }
 }
