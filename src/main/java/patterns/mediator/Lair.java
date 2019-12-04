@@ -61,4 +61,10 @@ public class Lair extends BaseLocation {
         return villains.get(index);
     }
 
+    @Override
+    public void update() {
+        for (BaseVillain villain : villains) {
+            villain.update();
+        }
+    }
 }

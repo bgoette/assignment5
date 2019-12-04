@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import main.java.BaseCharacter;
 import main.java.BaseLocation;
 import main.java.patterns.factory.BaseHero;
-import main.java.patterns.factory.BaseVillain;
 
 public class HeroBase extends BaseLocation {
     
@@ -61,4 +60,10 @@ public class HeroBase extends BaseLocation {
         return heroes.get(index);
     }
 
+    @Override
+    public void update() {
+        for (BaseHero hero : heroes) {
+            hero.update();
+        }
+    }
 }
