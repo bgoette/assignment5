@@ -16,7 +16,7 @@ public class Batman extends BaseHero {
      * Default constructor.
      */
     public Batman() {
-        super(10, "Batman");
+        super(15, "Batman");
         
         this.superPowers.add(new SuperHearingDecorator(10));
         this.superPowers.add(new LaserBeamDecorator(20));

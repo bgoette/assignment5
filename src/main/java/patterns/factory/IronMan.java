@@ -14,7 +14,7 @@ public class IronMan extends BaseHero {
      * Default constructor.
      */
     public IronMan() {
-        super(15, "Iron Man");
+        super(12, "Iron Man");
     }
 
     @Override

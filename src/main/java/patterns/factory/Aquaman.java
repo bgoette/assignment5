@@ -9,7 +9,7 @@ public class Aquaman extends BaseHero {
      * Default constructor.
      */
     public Aquaman() {
-        super(15, "Aqua Man");
+        super(18, "Aqua Man");
 
         this.superPowers.add(new XRayDecorator());
     }
