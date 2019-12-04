@@ -4,6 +4,9 @@ import main.java.patterns.decorator.GroundPoundDecorator;
 
 public class MonsterVillain extends BaseVillain {
 
+    /**
+     * Default constructor.
+     */
     public MonsterVillain() {
         super(5, "Monster");
         

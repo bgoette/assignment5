@@ -4,6 +4,9 @@ import main.java.patterns.decorator.SuperHearingDecorator;
 
 public class NinjaVillain extends BaseVillain {
 
+    /**
+     * Default constructor.
+     */
     public NinjaVillain() {
         super(10, "Ninja");
         

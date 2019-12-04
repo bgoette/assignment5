@@ -6,6 +6,9 @@ import main.java.patterns.decorator.XRayDecorator;
 
 public class MastermindVillain extends BaseVillain {
 
+    /**
+     * Default constructor.
+     */
     public MastermindVillain() {
         super(BaseCharacter.STARTING_HITPOINTS, "Mastermind");
         
