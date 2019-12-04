@@ -37,17 +37,20 @@ public class City extends BaseLocation {
      */
     public void beginSimulation() {
         Lair lair = new Lair();
-        lair.addOccupant(new MastermindVillain());
-        lair.addOccupant(new MonsterVillain());
-        lair.addOccupant(new NinjaVillain());
+        lair.addOccupant(Factory.createVillain());
+        lair.addOccupant(Factory.createVillain());
+        lair.addOccupant(Factory.createVillain());
+        lair.addOccupant(Factory.createVillain());
+        lair.addOccupant(Factory.createVillain());
 
         villainLairs.add(lair);
 
         HeroBase base = new HeroBase();
-        base.addOccupant(new Aquaman());
-        base.addOccupant(new Superman());
-        base.addOccupant(new Batman());
-        base.addOccupant(new IronMan());
+        base.addOccupant(Factory.createHero());
+        base.addOccupant(Factory.createHero());
+        base.addOccupant(Factory.createHero());
+        base.addOccupant(Factory.createHero());
+        base.addOccupant(Factory.createHero());
         
         heroBases.add(base);
         
@@ -144,6 +147,7 @@ public class City extends BaseLocation {
             this.log("[JOYOUS] THE HEROES WIN!");
             return;
         }
+        
         int villainIndex = randy.nextInt(lair.getOccupantCount());
         BaseVillain villain = (BaseVillain)lair.getOccupant(villainIndex);
         
@@ -164,10 +168,26 @@ public class City extends BaseLocation {
                 this.log("[BATTLE] The war must continue!");
             } else {
                 hero.saveCivilian();
+                hero.levelUp();
+                hero.addSuperPowers(villain.getSuperPowers());
+                
                 lair.removeOccupant(villain);
             }
+            
+            hero.heal(2);
         } else {
+            if (villain.getIsAlive()) {
+                villain.heal(2);
+                villain.levelUp();
+                
+                BaseVillain newVillain = Factory.clone(villain);
+            }
+            
             heroBase.removeOccupant(hero);
+        }
+        
+        for (HeroBase base : heroBases) {
+            base.update();
         }
     }
 
@@ -175,4 +195,7 @@ public class City extends BaseLocation {
     public BaseCharacter getOccupant(int index) {
         return null;
     }
+
+    @Override
+    public void update() { }
 }
