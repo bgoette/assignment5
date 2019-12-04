@@ -6,7 +6,9 @@ import java.util.TimerTask;
 
 import main.java.BaseCharacter;
 import main.java.BaseLocation;
-import main.java.patterns.factory.*;
+import main.java.patterns.factory.BaseHero;
+import main.java.patterns.factory.BaseVillain;
+import main.java.patterns.factory.Factory;
 
 public class City extends BaseLocation {
 
@@ -33,7 +35,7 @@ public class City extends BaseLocation {
     }
 
     /**
-     * Begins the simulation of the super hero world
+     * Begins the simulation of the super hero world.
      */
     public void beginSimulation() {
         Lair lair = new Lair();
@@ -181,6 +183,15 @@ public class City extends BaseLocation {
                 villain.levelUp();
                 
                 BaseVillain newVillain = Factory.clone(villain);
+                
+                boolean addSuccess = lair.addOccupant(newVillain);
+                
+                if (!addSuccess) {
+                    Lair newLair = new Lair();
+                    newLair.addOccupant(newVillain);
+                    
+                    villainLairs.add(newLair);
+                }
             }
             
             heroBase.removeOccupant(hero);
@@ -189,6 +200,12 @@ public class City extends BaseLocation {
         for (HeroBase base : heroBases) {
             base.update();
         }
+        
+        for (Lair villainLair : villainLairs) {
+            villainLair.update();
+        }
+        
+        this.log("[ROUND] COMPLETE!!!\n\n");
     }
 
     @Override
