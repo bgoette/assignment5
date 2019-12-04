@@ -5,6 +5,9 @@ import main.java.patterns.decorator.XRayDecorator;
 
 public class Aquaman extends BaseHero {
 
+    /**
+     * Default constructor.
+     */
     public Aquaman() {
         super(15, "Aqua Man");
 

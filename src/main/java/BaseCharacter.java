@@ -137,7 +137,7 @@ public abstract class BaseCharacter {
     }
     
     /**
-     * Called every tick, updates this character
+     * Called every tick, updates this character.
      */
     public void update() {
         if (this.ticksLeftToHeal > 0) {

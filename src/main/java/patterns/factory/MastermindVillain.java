@@ -7,5 +7,5 @@ public class MastermindVillain extends BaseVillain {
     public MastermindVillain() {
         super(BaseCharacter.STARTING_HITPOINTS, "Mastermind");
     }
-
+    
 }
