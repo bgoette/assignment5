@@ -77,7 +77,9 @@ public class Factory {
         }
         
         if (newVillain != null) {
-            newVillain.addSuperPowers(original.getSuperPowers());            
+            newVillain.addSuperPowers(original.getSuperPowers());
+            
+            System.out.println("[CLONE] " + newVillain.toString() + " has been cloned!");
         }
         
         return newVillain;

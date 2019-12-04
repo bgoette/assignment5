@@ -115,7 +115,7 @@ public abstract class BaseCharacter {
             this.log("[EXHAUSTED] I can't fight I'm nursing a wound!");
         }
         
-        if (this.superPowers.size() > 0 || this.isAlive) {
+        if (this.superPowers.size() > 0 && this.isAlive) {
             int powers = this.superPowers.size();
             if (powers <= 0) {
                 this.log("[PUNY MORTAL] I AM NOT SUPER!");
@@ -160,6 +160,31 @@ public abstract class BaseCharacter {
      * @param powers The powers to add.
      */
     public void addSuperPowers(ArrayList<ISuperPower> powers) {
+        
+        // List of powers to remove if already owned
+        ArrayList<ISuperPower> powersToRemove = new ArrayList<ISuperPower>();
+        
+        // Check if this character has any of the given powers yet
+        for (ISuperPower power : powers) {
+            for (ISuperPower myPower : this.superPowers) {
+                if (power.getClass().equals(myPower.getClass())) {
+                    
+                    //
+                    // Fulfills requirement to increase super power strength
+                    // if character already has this ability
+                    //
+                    myPower.increaseStrength(5);
+                    powersToRemove.add(power);
+                    
+                    break;
+                }
+            }
+        }
+        
+        // Remove any powers we already have
+        powers.removeAll(powersToRemove);
+        
+        // Add the remaining powers
         this.superPowers.addAll(powers);
     }
     
@@ -176,6 +201,34 @@ public abstract class BaseCharacter {
         return this.description;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        
+        if (!obj.getClass().equals(this.getClass())) {
+            return false;
+        }
+        
+        if (!(obj instanceof BaseCharacter)) {
+            return false;
+        }
+        
+        BaseCharacter other = (BaseCharacter)obj;
+        
+        if (!other.description.equals(this.description)) {
+            return false;
+        }
+        
+        return true;
+    }
+    
+    @Override
+    public int hashCode() {
+        return this.description.hashCode() + this.getSuperPowers().hashCode();
+    }
+    
     protected void log(String message) {
         System.out.println(this.description + ": " + message);
     }
