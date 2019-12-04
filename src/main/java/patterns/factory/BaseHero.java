@@ -5,16 +5,6 @@ import main.java.BaseCharacter;
 public abstract class BaseHero extends BaseCharacter {
 
     protected int civiliansSaved;
-    protected int powerLevel;
-    
-    /**
-     * Increases this hero's power level.
-     */
-    protected void levelUp() {
-        this.powerLevel++;
-        
-        this.log("Power Level -> " + this.powerLevel);
-    }
 
     /**
      * Default constructor.
@@ -41,6 +31,6 @@ public abstract class BaseHero extends BaseCharacter {
     public void saveCivilian() {
         this.civiliansSaved++;
         
-        this.log("Civilians Saved -> " + this.civiliansSaved);
+        this.log("[STATUS] Civilians Saved -> " + this.civiliansSaved);
     }
 }
