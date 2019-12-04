@@ -26,11 +26,15 @@ public class City extends BaseLocation {
     /**
      * Default constructor.
      */
-    public City() {
+    public City(Lair lair, HeroBase base) {
         super("MetroGothamOpolis");
         
         villainLairs = new ArrayList<Lair>();
+        villainLairs.add(lair);
+        
         heroBases = new ArrayList<HeroBase>();
+        heroBases.add(base);
+        
         simulationTimer = new Timer(true);
     }
 
@@ -38,24 +42,6 @@ public class City extends BaseLocation {
      * Begins the simulation of the super hero world.
      */
     public void beginSimulation() {
-        Lair lair = new Lair();
-        lair.addOccupant(Factory.createVillain());
-        lair.addOccupant(Factory.createVillain());
-        lair.addOccupant(Factory.createVillain());
-        lair.addOccupant(Factory.createVillain());
-        lair.addOccupant(Factory.createVillain());
-
-        villainLairs.add(lair);
-
-        HeroBase base = new HeroBase();
-        base.addOccupant(Factory.createHero());
-        base.addOccupant(Factory.createHero());
-        base.addOccupant(Factory.createHero());
-        base.addOccupant(Factory.createHero());
-        base.addOccupant(Factory.createHero());
-        
-        heroBases.add(base);
-        
         simulationRunning = true;
 
         simulationTimer.scheduleAtFixedRate(new TimerTask() {
