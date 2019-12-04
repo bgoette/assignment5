@@ -24,6 +24,10 @@ public class Superman extends BaseHero {
 
     @Override
     public int attack() {
+        if (this.ticksLeftToHeal > 0) {
+            return 0;
+        }
+        
         if (this.superPowers.size() > 0) {
             ISuperPower power = this.superPowers.get(randy.nextInt(this.superPowers.size()));
             int damage = (int) ((double) power.getDamageStrength() * (double) this.powerLevel

@@ -18,7 +18,7 @@ public class XRayDecorator extends SuperPowerDecorator {
      */
     public XRayDecorator() {
         // X Ray does very little damage
-        super(1, "INSERT 1980'S BEEP BOOP BOP BOOP...");
+        super(2, "INSERT 1980'S BEEP BOOP BOP BOOP...");
         
         initObjects();
     }

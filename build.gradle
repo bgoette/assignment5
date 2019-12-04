@@ -20,6 +20,15 @@ dependencies {
     compile "junit:junit:4.12"
 }
 
+test {
+   filter {
+      // Specific test class
+      includeTestsMatching "CharacterTest"
+      includeTestsMatching "LocationTest"
+      includeTestsMatching "FactoryTest"
+   }
+}
+
 /////////////////////////////////////////////////////////////////////////
 // Configure Checkstyle
 /////////////////////////////////////////////////////////////////////////

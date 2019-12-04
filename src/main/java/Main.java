@@ -1,7 +1,6 @@
 package main.java;
 
 import main.java.patterns.decorator.GroundPoundDecorator;
-import main.java.patterns.decorator.LaserBeamDecorator;
 import main.java.patterns.decorator.SuperHearingDecorator;
 import main.java.patterns.decorator.XRayDecorator;
 import main.java.patterns.factory.BaseHero;

@@ -37,6 +37,14 @@ public class City extends BaseLocation {
 
         simulationTimer = new Timer(true);
     }
+    
+    /**
+     * Getter for simulationRunning.
+     * @return True if simulation is running.
+     */
+    public boolean getSimulationRunning() {
+        return this.simulationRunning;
+    }
 
     /**
      * Begins the simulation of the super hero world.
@@ -63,15 +71,20 @@ public class City extends BaseLocation {
     public int getOccupantCount() {
         ArrayList<BaseLocation> locations = new ArrayList<BaseLocation>(villainLairs);
         locations.addAll(heroBases);
+        
+        int count = 0;
+        for (BaseLocation location : locations) {
+            count += location.getOccupantCount();
+        }
 
-        return locations.size();
+        return count;
     }
 
     @Override
     public boolean addOccupant(BaseCharacter occupant) {
-        if (occupant.getClass().equals(BaseVillain.class)) {
+        if (occupant instanceof BaseVillain) {
             return villainLairs.get(randy.nextInt(villainLairs.size())).addOccupant(occupant);
-        } else if (occupant.getClass().equals(BaseHero.class)) {
+        } else if (occupant instanceof BaseHero) {
             return heroBases.get(randy.nextInt(heroBases.size())).addOccupant(occupant);
         }
 
@@ -113,8 +126,12 @@ public class City extends BaseLocation {
 
         this.log(message);
     }
-    
-    private int getTotalVillainsLeft() {
+
+    /**
+     * Gets total villains left.
+     * @return Villain count.
+     */
+    public int getTotalVillainsLeft() {
         int villainsLeft  = 0;
         
         for (Lair lair : villainLairs) {
@@ -124,7 +141,11 @@ public class City extends BaseLocation {
         return villainsLeft;
     }
     
-    private int getTotalHeroesLeft() {
+    /**
+     * Gets total heroes left.
+     * @return Hero count.
+     */
+    public int getTotalHeroesLeft() {
         int heroesLeft  = 0;
         
         for (HeroBase base : heroBases) {

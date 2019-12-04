@@ -113,16 +113,11 @@ public abstract class BaseCharacter {
     public int attack() {
         if (this.ticksLeftToHeal > 0) {
             this.log("[EXHAUSTED] I can't fight I'm nursing a wound!");
+            
+            return 0;
         }
         
         if (this.superPowers.size() > 0 && this.isAlive) {
-            int powers = this.superPowers.size();
-            if (powers <= 0) {
-                this.log("[PUNY MORTAL] I AM NOT SUPER!");
-                
-                return 0;
-            }
-            
             ISuperPower power = this.superPowers.get(randy.nextInt(this.superPowers.size()));
             int damage = power.getDamageStrength();
             
