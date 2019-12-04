@@ -68,4 +68,9 @@ public abstract class BaseLocation {
      * Updates state for objects in this location.
      */
     public abstract void update();
+    
+    @Override
+    public String toString() {
+        return this.description;
+    }
 }
